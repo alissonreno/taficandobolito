@@ -41,7 +41,7 @@
       overflow-x: hidden;
     }
 
-    h1, h2, h3 {
+    h1, h2, h3, h4 {
       font-family: 'Baloo 2', cursive;
       line-height: 1.3;
     }
@@ -52,6 +52,11 @@
       display: block;
     }
 
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
     .container {
       width: 100%;
       max-width: 1200px;
@@ -59,7 +64,7 @@
       padding: 0 20px;
     }
 
-    /* HEADER ESTILIZADO */
+    /* HEADER */
     header {
       background: var(--white);
       box-shadow: var(--shadow-sm);
@@ -108,7 +113,7 @@
       font-weight: 500;
     }
 
-    /* NAVEGAÇÃO */
+    /* NAV */
     nav {
       display: flex;
       gap: 10px;
@@ -132,7 +137,7 @@
       box-shadow: var(--shadow-md);
     }
 
-    /* SEÇÃO HERO */
+    /* HERO */
     .hero {
       padding: 80px 0;
       background: linear-gradient(135deg, rgba(255,214,218,0.8) 0%, rgba(255,241,241,0.9) 100%);
@@ -192,7 +197,7 @@
       transform: perspective(1000px) rotateY(0deg);
     }
 
-    /* BOTÕES */
+    /* BUTTONS */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -229,7 +234,7 @@
       color: var(--white);
     }
 
-    /* SEÇÕES */
+    /* SECTIONS */
     .section {
       padding: 80px 0;
     }
@@ -259,7 +264,13 @@
       border-radius: 2px;
     }
 
-    /* CARDS DE RECEITA */
+    .section-header p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--gray);
+    }
+
+    /* RECIPES */
     .recipes-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -317,40 +328,137 @@
       font-size: 0.9rem;
     }
 
-    /* SEÇÃO DE VÍDEO */
-    .video-section {
-      background: linear-gradient(135deg, var(--light) 0%, #fff 100%);
-      padding: 80px 0;
-      text-align: center;
+    /* VIDEO GALLERY */
+    .video-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
     }
 
-    .video-container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 20px;
+    .video-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
     }
 
-    .video-wrapper {
+    .video-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .video-thumbnail {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-lg);
-      margin-bottom: 30px;
-      background: #000;
     }
 
-    .video-wrapper iframe {
+    .video-thumbnail img {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      border: none;
+      object-fit: cover;
+      transition: var(--transition);
     }
 
-    /* FORMULÁRIO DE CONTATO */
+    .video-thumbnail::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      transition: var(--transition);
+    }
+
+    .video-thumbnail:hover::after {
+      background: rgba(231, 29, 54, 0.5);
+    }
+
+    .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--white);
+      font-size: 3rem;
+      z-index: 1;
+      opacity: 0.9;
+      transition: var(--transition);
+    }
+
+    .video-item:hover .play-icon {
+      transform: translate(-50%, -50%) scale(1.1);
+      opacity: 1;
+    }
+
+    .video-info {
+      padding: 20px;
+    }
+
+    .video-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+
+    .video-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* VIDEO MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      width: 90%;
+      max-width: 900px;
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .modal-video {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: none;
+      border-radius: var(--radius);
+    }
+
+    /* CONTACT */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -495,6 +603,10 @@
       .hero-text h2 {
         font-size: 2.2rem;
       }
+      
+      .video-gallery {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -512,7 +624,7 @@
       <nav>
         <a href="#home" class="nav-link active"><i class="fas fa-home"></i> Início</a>
         <a href="#recipes" class="nav-link"><i class="fas fa-utensils"></i> Receitas</a>
-        <a href="#video" class="nav-link"><i class="fas fa-video"></i> Vídeos</a>
+        <a href="#videos" class="nav-link"><i class="fas fa-video"></i> Vídeos</a>
         <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contato</a>
       </nav>
     </div>
@@ -524,9 +636,9 @@
       <div class="hero-text">
         <h2>Aprenda a cozinhar <span>com diversão!</span></h2>
         <p>Junte-se ao Bolito em aventuras culinárias cheias de aprendizado, bagunça e muito sabor. Receitas simples para fazer em família.</p>
-        <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
           <a href="#recipes" class="btn btn-primary"><i class="fas fa-book-open"></i> Ver Receitas</a>
-          <a href="#video" class="btn btn-outline"><i class="fab fa-youtube"></i> Assistir Vídeo</a>
+          <a href="#videos" class="btn btn-outline"><i class="fab fa-youtube"></i> Ver Vídeos</a>
         </div>
       </div>
       <div class="hero-image">
@@ -566,8 +678,8 @@
             <img src="assets/img/torta-morango.jpg" alt="Torta de morango">
           </div>
           <div class="recipe-content">
-            <h3>Bolo Fit</h3>
-            <p>A especialidade da mamãe, com uvas passas frescos e muito amor. Perfeita para festas!</p>
+            <h3>Torta de Morango</h3>
+            <p>A especialidade da mamãe, com morangos frescos e muito amor. Perfeita para festas!</p>
             <a href="#" class="btn btn-primary"><i class="fas fa-book-open"></i> Ver Receita</a>
             <div class="recipe-meta">
               <span><i class="fas fa-user"></i> Mamãe</span>
@@ -587,7 +699,7 @@
             <a href="#" class="btn btn-primary"><i class="fas fa-book-open"></i> Ver Receita</a>
             <div class="recipe-meta">
               <span><i class="fas fa-users"></i> Família</span>
-              <span><i class="fas fa-clock"></i> 2 min</span>
+              <span><i class="fas fa-clock"></i> 50 min</span>
             </div>
           </div>
         </div>
@@ -595,30 +707,85 @@
     </div>
   </section>
 
-  <!-- VIDEO SECTION -->
-  <section class="video-section" id="video">
+  <!-- VÍDEOS SECTION -->
+  <section class="section" id="videos">
     <div class="container">
       <div class="section-header">
-        <h2>Nosso Vídeo Mais Recente</h2>
-        <p>Assista ao Bolito em ação na cozinha!</p>
+        <h2>Nossos Vídeos</h2>
+        <p>Acompanhe as aventuras do Bolito na cozinha</p>
       </div>
       
-      <div class="video-container">
-        <div class="video-wrapper">
-          <iframe 
-            src="https://www.youtube.com/embed/m_dG85xvMjI?rel=0&modestbranding=1&enablejsapi=1" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen
-            title="Bolito na cozinha">
-          </iframe>
+      <div class="video-gallery">
+        <!-- Vídeo 1 -->
+        <div class="video-item" data-video-id="https://youtu.be/m_dG85xvMjI?si=Hsl8tjb5fH4kJQgk">
+          <div class="video-thumbnail">
+            <img src="assets/img/video-thumb-1.jpg" alt="Bolito fazendo bolo de Chocolate">
+            <i class="fas fa-play play-icon"></i>
+          </div>
+          <div class="video-info">
+            <h3>Bolito fazendo seu segundo bolo</h3>
+            <div class="video-meta">
+              <span><i class="fas fa-calendar-alt"></i> 09/08/2025</span>
+              <span><i class="fas fa-eye"></i> 1.2K visualizações</span>
+            </div>
+          </div>
         </div>
-        <a href="https://youtu.be/m_dG85xvMjI" target="_blank" class="btn btn-outline">
-          <i class="fab fa-youtube"></i> Assistir no YouTube
-        </a>
+        
+        <!-- Vídeo 2 -->
+        <div class="video-item" data-video-id="SEU_SEGUNDO_VIDEO_ID">
+          <div class="video-thumbnail">
+            <img src="assets/img/video-thumb-2.jpg" alt="Bolito decorando cupcakes">
+            <i class="fas fa-play play-icon"></i>
+          </div>
+          <div class="video-info">
+            <h3>Decorando cupcakes com o Bolito</h3>
+            <div class="video-meta">
+              <span><i class="fas fa-calendar-alt"></i> 22/06/2023</span>
+              <span><i class="fas fa-eye"></i> 890 visualizações</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Vídeo 3 -->
+        <div class="video-item" data-video-id="SEU_TERCEIRO_VIDEO_ID">
+          <div class="video-thumbnail">
+            <img src="assets/img/video-thumb-3.jpg" alt="Torta de aniversário">
+            <i class="fas fa-play play-icon"></i>
+          </div>
+          <div class="video-info">
+            <h3>Torta de aniversário especial</h3>
+            <div class="video-meta">
+              <span><i class="fas fa-calendar-alt"></i> 30/06/2023</span>
+              <span><i class="fas fa-eye"></i> 1.5K visualizações</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Vídeo 4 -->
+        <div class="video-item" data-video-id="SEU_QUARTO_VIDEO_ID">
+          <div class="video-thumbnail">
+            <img src="assets/img/video-thumb-4.jpg" alt="Biscoitos de natal">
+            <i class="fas fa-play play-icon"></i>
+          </div>
+          <div class="video-info">
+            <h3>Fazendo biscoitos de natal</h3>
+            <div class="video-meta">
+              <span><i class="fas fa-calendar-alt"></i> 10/12/2023</span>
+              <span><i class="fas fa-eye"></i> 2.1K visualizações</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- MODAL DE VÍDEO -->
+  <div class="modal" id="videoModal">
+    <div class="modal-content">
+      <span class="close-modal"><i class="fas fa-times"></i></span>
+      <iframe class="modal-video" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
 
   <!-- CONTATO SECTION -->
   <section class="section contact-section" id="contact">
@@ -769,17 +936,34 @@
       });
     });
     
-    // Efeito de hover nos cards de receita
-    const recipeCards = document.querySelectorAll('.recipe-card');
-    recipeCards.forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        card.querySelector('img').style.transform = 'scale(1.1)';
+    // Galeria de vídeos - Modal
+    const videoItems = document.querySelectorAll('.video-item');
+    const videoModal = document.getElementById('videoModal');
+    const modalVideo = document.querySelector('.modal-video');
+    const closeModal = document.querySelector('.close-modal');
+    
+    videoItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const videoId = item.getAttribute('data-video-id');
+        modalVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+        videoModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
       });
-      card.addEventListener('mouseleave', () => {
-        card.querySelector('img').style.transform = 'scale(1)';
-      });
+    });
+    
+    closeModal.addEventListener('click', () => {
+      videoModal.classList.remove('show');
+      modalVideo.src = '';
+      document.body.style.overflow = 'auto';
+    });
+    
+    videoModal.addEventListener('click', (e) => {
+      if (e.target === videoModal) {
+        videoModal.classList.remove('show');
+        modalVideo.src = '';
+        document.body.style.overflow = 'auto';
+      }
     });
   </script>
 </body>
-
 </html>
