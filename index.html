@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tá Ficando Bolito | Culinária Infantil Criativa</title>
   <meta name="description" content="Acompanhe as aventuras culinárias do Bolito, nosso pequeno chef! Receitas fáceis e divertidas para fazer em família.">
+  <meta name="keywords" content="receitas infantis, culinária com crianças, bolos caseiros, Tá Ficando Bolito">
+  <meta property="og:title" content="Tá Ficando Bolito | Culinária Infantil Criativa">
+  <meta property="og:description" content="Acompanhe as aventuras culinárias do Bolito, nosso pequeno chef!">
+  <meta property="og:image" content="https://taficandobolito.com/logo.png">
+  <meta property="og:url" content="https://taficandobolito.com">
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -415,6 +420,30 @@
       font-size: 0.9rem;
     }
 
+    /* FEATURED VIDEO */
+    .featured-video {
+      margin: 60px 0;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      background: #000;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
     /* VIDEO MODAL */
     .modal {
       display: none;
@@ -456,6 +485,74 @@
       aspect-ratio: 16/9;
       border: none;
       border-radius: var(--radius);
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      background: var(--white);
+      padding: 80px 0;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .testimonial-card {
+      background: var(--light);
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 4rem;
+      font-family: serif;
+      color: rgba(0,0,0,0.1);
+      line-height: 1;
+    }
+
+    .testimonial-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary);
+    }
+
+    .author-info h4 {
+      font-size: 1.1rem;
+      color: var(--primary-dark);
+      margin-bottom: 5px;
+    }
+
+    .author-info p {
+      font-size: 0.9rem;
+      color: var(--gray);
     }
 
     /* CONTACT */
@@ -625,6 +722,7 @@
         <a href="#home" class="nav-link active"><i class="fas fa-home"></i> Início</a>
         <a href="#recipes" class="nav-link"><i class="fas fa-utensils"></i> Receitas</a>
         <a href="#videos" class="nav-link"><i class="fas fa-video"></i> Vídeos</a>
+        <a href="#testimonials" class="nav-link"><i class="fas fa-star"></i> Depoimentos</a>
         <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contato</a>
       </nav>
     </div>
@@ -642,7 +740,7 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="assets/img/hero-image.jpg" alt="Bolito cozinhando com a mãe">
+        <img src="assets/img/hero-image.jpg" alt="Bolito cozinhando com a mãe" loading="lazy">
       </div>
     </div>
   </section>
@@ -659,10 +757,10 @@
         <!-- Receita 1 -->
         <div class="recipe-card">
           <div class="recipe-image">
-            <img src="assets/img/bolo-chocolate.jpg" alt="Bolo de chocolate">
+            <img src="assets/img/bolo-fit.jpg" alt="Bolo Fit" loading="lazy">
           </div>
           <div class="recipe-content">
-            <h3>Bolo de Chocolate</h3>
+            <h3>Bolo Fit</h3>
             <p>O primeiro bolo que o Bolito ajudou a fazer! Receita simples e deliciosa que as crianças adoram.</p>
             <a href="#" class="btn btn-primary"><i class="fas fa-book-open"></i> Ver Receita</a>
             <div class="recipe-meta">
@@ -675,15 +773,15 @@
         <!-- Receita 2 -->
         <div class="recipe-card">
           <div class="recipe-image">
-            <img src="assets/img/torta-morango.jpg" alt="Torta de morango">
+            <img src="assets/img/bolo-de-chocolate.jpg" alt="Bolo de Chocolate" loading="lazy">
           </div>
           <div class="recipe-content">
-            <h3>Torta de Morango</h3>
-            <p>A especialidade da mamãe, com morangos frescos e muito amor. Perfeita para festas!</p>
+            <h3>Bolo de Chocolate</h3>
+            <p>A especialidade da mamãe, com chocolate fresco e muito amor. Perfeita para festas!</p>
             <a href="#" class="btn btn-primary"><i class="fas fa-book-open"></i> Ver Receita</a>
             <div class="recipe-meta">
               <span><i class="fas fa-user"></i> Mamãe</span>
-              <span><i class="fas fa-clock"></i> 1h 15min</span>
+              <span><i class="fas fa-clock"></i> 1h</span>
             </div>
           </div>
         </div>
@@ -691,7 +789,7 @@
         <!-- Receita 3 -->
         <div class="recipe-card">
           <div class="recipe-image">
-            <img src="assets/img/cupcakes.jpg" alt="Cupcakes coloridos">
+            <img src="assets/img/cupcakes.jpg" alt="Cupcakes coloridos" loading="lazy">
           </div>
           <div class="recipe-content">
             <h3>Cupcakes Coloridos</h3>
@@ -699,9 +797,36 @@
             <a href="#" class="btn btn-primary"><i class="fas fa-book-open"></i> Ver Receita</a>
             <div class="recipe-meta">
               <span><i class="fas fa-users"></i> Família</span>
-              <span><i class="fas fa-clock"></i> 50 min</span>
+              <span><i class="fas fa-clock"></i> 40 min</span>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESTAQUE VIDEO SECTION -->
+  <section class="section" id="featured-video">
+    <div class="container">
+      <div class="section-header">
+        <h2>Vídeo em Destaque</h2>
+        <p>Confira nossa última aventura na cozinha!</p>
+      </div>
+      
+      <div class="featured-video">
+        <div class="video-wrapper">
+          <!-- SEU VÍDEO DO YOUTUBE - LINK ATUALIZADO -->
+          <iframe 
+            src="https://www.youtube.com/embed/m_dG85xvMjI?si=KdF2NbjwMl7vFyY-&amp;rel=0&amp;modestbranding=1&amp;showinfo=0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            title="Bolito na cozinha">
+          </iframe>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+          <a href="https://youtu.be/m_dG85xvMjI?si=KdF2NbjwMl7vFyY-" target="_blank" class="btn btn-outline">
+            <i class="fab fa-youtube"></i> Assistir no YouTube
+          </a>
         </div>
       </div>
     </div>
@@ -717,15 +842,15 @@
       
       <div class="video-gallery">
         <!-- Vídeo 1 -->
-        <div class="video-item" data-video-id="https://youtu.be/m_dG85xvMjI?si=Hsl8tjb5fH4kJQgk">
+        <div class="video-item" data-video-id="m_dG85xvMjI">
           <div class="video-thumbnail">
-            <img src="assets/img/video-thumb-1.jpg" alt="Bolito fazendo bolo de Chocolate">
+            <img src="assets/img/video-thumb-1.jpg" alt="Bolito fazendo bolo" loading="lazy">
             <i class="fas fa-play play-icon"></i>
           </div>
           <div class="video-info">
-            <h3>Bolito fazendo seu segundo bolo</h3>
+            <h3>Bolito fazendo seu primeiro bolo</h3>
             <div class="video-meta">
-              <span><i class="fas fa-calendar-alt"></i> 09/08/2025</span>
+              <span><i class="fas fa-calendar-alt"></i> 15/06/2023</span>
               <span><i class="fas fa-eye"></i> 1.2K visualizações</span>
             </div>
           </div>
@@ -734,7 +859,7 @@
         <!-- Vídeo 2 -->
         <div class="video-item" data-video-id="SEU_SEGUNDO_VIDEO_ID">
           <div class="video-thumbnail">
-            <img src="assets/img/video-thumb-2.jpg" alt="Bolito decorando cupcakes">
+            <img src="assets/img/video-thumb-2.jpg" alt="Bolito decorando cupcakes" loading="lazy">
             <i class="fas fa-play play-icon"></i>
           </div>
           <div class="video-info">
@@ -749,7 +874,7 @@
         <!-- Vídeo 3 -->
         <div class="video-item" data-video-id="SEU_TERCEIRO_VIDEO_ID">
           <div class="video-thumbnail">
-            <img src="assets/img/video-thumb-3.jpg" alt="Torta de aniversário">
+            <img src="assets/img/video-thumb-3.jpg" alt="Torta de aniversário" loading="lazy">
             <i class="fas fa-play play-icon"></i>
           </div>
           <div class="video-info">
@@ -764,7 +889,7 @@
         <!-- Vídeo 4 -->
         <div class="video-item" data-video-id="SEU_QUARTO_VIDEO_ID">
           <div class="video-thumbnail">
-            <img src="assets/img/video-thumb-4.jpg" alt="Biscoitos de natal">
+            <img src="assets/img/video-thumb-4.jpg" alt="Biscoitos de natal" loading="lazy">
             <i class="fas fa-play play-icon"></i>
           </div>
           <div class="video-info">
@@ -776,16 +901,68 @@
           </div>
         </div>
       </div>
+      
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="https://www.youtube.com/@taficandobolito" target="_blank" class="btn btn-primary">
+          <i class="fab fa-youtube"></i> Ver todos os vídeos no YouTube
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- MODAL DE VÍDEO -->
-  <div class="modal" id="videoModal">
-    <div class="modal-content">
-      <span class="close-modal"><i class="fas fa-times"></i></span>
-      <iframe class="modal-video" frameborder="0" allowfullscreen></iframe>
+  <!-- DEPOIMENTOS SECTION -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <h2>O que dizem sobre nós</h2>
+        <p>Veja o que as famílias estão falando sobre o Tá Ficando Bolito</p>
+      </div>
+      
+      <div class="testimonial-grid">
+        <!-- Depoimento 1 -->
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p class="testimonial-text">Meu filho de 5 anos adorou fazer o bolo de chocolate com a receita do Bolito! Foi a primeira vez que ele se interessou por cozinhar.</p>
+            <div class="testimonial-author">
+              <img src="assets/img/avatar1.jpg" alt="Ana Silva" class="author-avatar" loading="lazy">
+              <div class="author-info">
+                <h4>Ana Silva</h4>
+                <p>Mãe do Pedro, 5 anos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Depoimento 2 -->
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p class="testimonial-text">As receitas são tão simples e bem explicadas que até eu, que não sabia nada de cozinha, consegui fazer com minha filha. Obrigada!</p>
+            <div class="testimonial-author">
+              <img src="assets/img/avatar2.jpg" alt="Carlos Oliveira" class="author-avatar" loading="lazy">
+              <div class="author-info">
+                <h4>Carlos Oliveira</h4>
+                <p>Pai da Maria, 6 anos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Depoimento 3 -->
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p class="testimonial-text">O Bolito é uma inspiração para meus alunos na escola. Usamos os vídeos dele para ensinar sobre alimentação saudável de forma divertida.</p>
+            <div class="testimonial-author">
+              <img src="assets/img/avatar3.jpg" alt="Prof. Juliana" class="author-avatar" loading="lazy">
+              <div class="author-info">
+                <h4>Prof. Juliana</h4>
+                <p>Educadora infantil</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
   <!-- CONTATO SECTION -->
   <section class="section contact-section" id="contact">
@@ -859,6 +1036,14 @@
     </div>
   </section>
 
+  <!-- MODAL DE VÍDEO -->
+  <div class="modal" id="videoModal">
+    <div class="modal-content">
+      <span class="close-modal"><i class="fas fa-times"></i></span>
+      <iframe class="modal-video" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <div class="container">
@@ -899,8 +1084,8 @@
         <div class="footer-col">
           <h3>Newsletter</h3>
           <p style="color: rgba(255,255,255,0.7); margin: 15px 0;">Receba nossas novidades por email!</p>
-          <form style="display: flex;">
-            <input type="email" placeholder="Seu email" style="flex: 1; padding: 10px; border: none; border-radius: 4px 0 0 4px;">
+          <form id="newsletterForm" style="display: flex;">
+            <input type="email" placeholder="Seu email" required style="flex: 1; padding: 10px; border: none; border-radius: 4px 0 0 4px;">
             <button type="submit" style="background: var(--primary); color: white; border: none; padding: 0 15px; border-radius: 0 4px 4px 0; cursor: pointer;">
               <i class="fas fa-paper-plane"></i>
             </button>
@@ -923,6 +1108,13 @@
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+      this.reset();
+    });
+    
+    // Newsletter
+    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Obrigado por se inscrever em nossa newsletter!');
       this.reset();
     });
     
@@ -963,6 +1155,30 @@
         modalVideo.src = '';
         document.body.style.overflow = 'auto';
       }
+    });
+
+    // Ativar menu conforme scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= sectionTop - 300) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
     });
   </script>
 </body>
